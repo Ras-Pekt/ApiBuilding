@@ -1,23 +1,39 @@
 {% extends "./layout.html" %}
 {% block content %}
 	<h1>Undecided Website</h1>
-	<p>Are you the kind of person who is intested in Random facts, Random Student names and Random images of dogs?</p>
-	<p>Well, you're in luck, coz you just stumbled onto a website specifically dedicated to Random facts, Random Student names and Random images of dogs</p>
+	<p>Are you the kind of person who is intested in Random facts, and Random Students?</p>
+	<p>Well, you're in luck, coz you just stumbled onto a website specifically dedicated to Random facts, Random Students and other Random stuff <span>&#x1F60B;</span></p>
 	<p>And to show you how dedicated we are are, here's today's random fact</p>
 	<p><strong>{{ fact }}</strong></p>
-	<p>Still not satisfied? <a href="{% url 'random_facts' %}">Click here</a> to see more interesting random facts</p>
+	<p>Still not satisfied <span>&#x1F632;</span>? <a href="{% url 'random_facts' %}">Click here</a> to see more interesting random facts</p>
 	<hr>
+	<h2>Student of the Day</h2>
+	<p>And now, for the moment you've all been waiting for, the Random Student of the day is...</p>
+	<p><strong>{{ student_dict.name }}</strong><span>&#x1F387;</span><span>&#x1F387;</span><span>&#x1F387;</span></p>
+	<p>Here are a few more details about {{ student_dict.name }}</p>
+	<p>{{ student_dict.first_name }} is a {{ student_dict.age }}-year-old {{ student_dict.gender }} student residing in {{ student_dict.address.city }}, {{ student_dict.address.street }}, {{ student_dict.address.country }}. {{ student_dict.pronoun }} can be reached via email at {{ student_dict.email }} or by phone at {{ student_dict.phone }}. {{ student_dict.first_name }} is currently enrolled in 
+		{% for course in student_dict.courses %}
+			{{ course }} and
+		{% endfor %} 
+	maintains a GPA of {{ student_dict.gpa }}.</p>
+	<p>
+		{{ student_dict.first_name }} is also an avid reader and currently {{ student_dict.pronoun|lower }} is reading the fantastic book, 
+		<strong>
+			<i>{{ book_dict.title }}</i>
+		</strong>
+		<br><br>
+		<img class="idx-img" src="{{ book_dict.url }}" alt="{{ book_dict.title }} by {{ book_dict.author }}">
+		<br><br>
+		{{ book_dict.description }} by the prolific writer {{ book_dict.author }}.
+	</p>
+	<hr>
+	
+
+	
+
 
   <!-- Using CSS, style the random fact, Random Student, & Random Image -->
   <!-- Use your own colors create cards for the random facts and students,  -->
   <!-- Pro Tip: You can use multiple pages -->
   <!-- Pro Tip: Impliment a  refresh/reload button in every page  -->
-  <h1>Random Student</h1>
-  {{name}}
-
-
-  <h1>Random Image</h1>
-
-  <img src="https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg">
-  <!-- {{dog}} -->
 {% endblock content %}
