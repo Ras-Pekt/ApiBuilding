@@ -1,0 +1,25 @@
+{% extends "./layout.html" %}
+
+{% block content %}
+    <h1>Random Facts</h1>
+    <div class="row" id="fact-container">
+        {% for fact in facts %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ fact }}</h5>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+	<div class="d-flex justify-content-center mt-4">
+        <a href="{% url 'random_facts' %}"><button class="btn btn-primary">Load More Facts</button></a>
+    </div>
+	{% if facts %}
+	<div class="d-flex justify-content-center mt-4">
+        <a href="{% url 'clear_facts' %}"><button class="btn btn-primary">Clear All Facts</button></a>
+    </div>
+	{% endif %}
+
+{% endblock content %}

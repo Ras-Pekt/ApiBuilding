@@ -1,29 +1,23 @@
-{% load static%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'styles.css'%}">
-  <title>Document</title>
-</head>
-<body>
+{% extends "./layout.html" %}
+{% block content %}
+	<h1>Undecided Website</h1>
+	<p>Are you the kind of person who is intested in Random facts, Random Student names and Random images of dogs?</p>
+	<p>Well, you're in luck, coz you just stumbled onto a website specifically dedicated to Random facts, Random Student names and Random images of dogs</p>
+	<p>And to show you how dedicated we are are, here's today's random fact</p>
+	<p><strong>{{ fact }}</strong></p>
+	<p>Still not satisfied? <a href="{% url 'random_facts' %}">Click here</a> to see more interesting random facts</p>
+	<hr>
 
   <!-- Using CSS, style the random fact, Random Student, & Random Image -->
   <!-- Use your own colors create cards for the random facts and students,  -->
   <!-- Pro Tip: You can use multiple pages -->
   <!-- Pro Tip: Impliment a  refresh/reload button in every page  -->
-  <h1>Random Fact</h1>
-  {{fact}}
-
   <h1>Random Student</h1>
   {{name}}
 
 
   <h1>Random Image</h1>
 
-  <img src="{{dog}}" alt="">
+  <img src="https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg">
   <!-- {{dog}} -->
-</body>
-</html>
+{% endblock content %}
